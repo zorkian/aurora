@@ -1,3 +1,18 @@
 /* The default CSS for the Aurora blogging engine.
 
    This is very simple and boring.  Please spruce me up. */
+
+header {
+    font-size: larger;
+    margin-bottom: 0.5em;
+}
+
+section {
+    border: solid 1px #eee;
+    padding: 0.2em;
+}
+
+footer {
+    margin-top: 0.5em;
+    font-size: smaller;
+}

@@ -1,19 +1,6 @@
-<!doctype html>
-<html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="/static/css/aurora.css">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
-        <title>{% block title %}{% endblock %}</title>
-    </head>
-    <body>
-        <header>
-            {% block pagetitle %}{% block title %}{% endblock %}{% endblock %}
-        </header>
-        <section>
-            {% block content %}{% endblock %}
-        </section>
-        <footer>
-            Powered by <a href="https://github.com/xb95/aurora">Aurora</a>
-        </footer>
-    </body>
-</html>
+{% extends "layout/base.html" %}
+{% block title %}Aurora{% endblock %}
+{% block pagetitle %}Welcome to my blog!{% endblock %}
+{% block content %}
+    This is where the articles go.
+{% endblock %}
