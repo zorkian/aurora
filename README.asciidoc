@@ -1,0 +1,4 @@
+Not a bunch of stuff here yet.
+
+This will be licensed and such. For now, I'm just throwing it on GitHub
+so I can use it from other places.  Awesome!
