@@ -17,20 +17,24 @@ Written by Mark Smith <mark@qq.is>.
 import os
 import re
 import pprint
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, Markup
 from markdown import markdown
 from time import time
+from aurora import *
 
 
-ARCHIVE = {}  # Yr -> Mo -> [ list of articles ]
 ARTICLE_CACHE_TIMER = None
-ARTICLES = {}  # slug => filename
+ARTICLES = None  # Articles object
 app = Flask(__name__)
 
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    '''The index page contains the most recent articles.
+
+    '''
+    global ARTICLES
+    return render_template('index.html', articles=ARTICLES)
 
 
 @app.route('/article/<slug>')
@@ -38,18 +42,15 @@ def article(slug=None):
     global ARTICLES
     if slug is None:
         return redirect('/')
-    if not slug in ARTICLES:
+    if not slug in ARTICLES.by_slug:
         return error_404()
 
-    with open(ARTICLES[slug], 'r') as f:
-        md = markdown(f.read())
+    md = Markup(markdown(ARTICLES.by_slug[slug].content))
     return render_template('article.html', article=md)
 
 
-def error_404():
-    '''Return a 404 page.
-
-    '''
+@app.errorhandler(404)
+def error_404(error=None):
     return render_template('404.html')
 
 
@@ -58,32 +59,14 @@ def refresh_article_list():
     '''Read through the filesystem and find articles.
 
     '''
-    global ARTICLES, ARTICLE_CACHE_TIMER, ARCHIVE
+    global ARTICLES, ARTICLE_CACHE_TIMER
     if ARTICLE_CACHE_TIMER is not None and time() < ARTICLE_CACHE_TIMER:
         return
     ARTICLE_CACHE_TIMER = time() + 10
-
-    if not os.path.isdir('articles'):
-        return
-    for fn in os.listdir('articles'):
-        ffn = os.path.join('articles', fn)
-        if not os.path.isfile(ffn):
-            continue
-        match = re.match(r'^(\d\d\d\d)-(\d\d)-(\d\d)-(.+)\.md$', fn)
-        if match is None:
-            continue
-        yr, mo, da, slug = match.groups()
-        ARTICLES[slug] = ffn
-
-        if not yr in ARCHIVE:
-            ARCHIVE[yr] = {}
-        if not mo in ARCHIVE[yr]:
-            ARCHIVE[yr][mo] = []
-        ARCHIVE[yr][mo].append(ffn)
-        ARCHIVE[yr][mo].sort()
-        ARCHIVE[yr][mo].reverse()
+    ARTICLES = Articles('articles')  # Articles!
 
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
+    app.debug = True
     app.run(host='0.0.0.0', port=port)

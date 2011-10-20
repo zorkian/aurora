@@ -2,5 +2,7 @@
 {% block title %}Aurora{% endblock %}
 {% block pagetitle %}Welcome to my blog!{% endblock %}
 {% block content %}
-    This is where the articles go.
+    {% for article in articles.by_recent %}
+        {% include 'article/simple.html' %}
+    {% endfor %}
 {% endblock %}
