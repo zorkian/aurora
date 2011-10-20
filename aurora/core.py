@@ -12,7 +12,7 @@ class Articles:
     '''Keeps track of all of the individual articles that exist.
 
     '''
-    def __init__(self, path):
+    def __init__(self, path, formatter):
         self.by_slug = {}  # Slug -> Article
         self.by_recent = []  # [ Art, Art, Art... ] where 0 is oldest, -1 is most recent
         self.by_date = {}  # Yr -> { Mo -> [ ... ] }
@@ -32,7 +32,9 @@ class Articles:
             yr, mo, da = int(yr), int(mo), int(da)
 
             # Now we have an article, store it.
-            art = Article(yr, mo, da, slug, ffn)
+            art = Article(yr, mo, da, slug, ffn, formatter)
+            if not art.publish:
+                continue
             self.by_slug[slug] = art
             self.by_recent.append(art)
             if yr not in self.by_date:
@@ -46,13 +48,13 @@ class Articles:
         for yr in self.by_date:
             for mo in self.by_date[yr]:
                 self.by_date[yr][mo].sort()
-            
+
 
 class Article:
     '''A single Article.
 
     '''
-    def __init__(self, yr, mo, da, slug, ffn):
+    def __init__(self, yr, mo, da, slug, ffn, formatter):
         self.time = '%d-%d-%d' % (yr, mo, da)
         self.year = yr
         self.month = mo
@@ -61,17 +63,41 @@ class Article:
         self.filename = ffn
         self.props = {}
         self.content = ''
+        self.raw_content = ''
+        self.publish = True
+        self.date = '%04d-%02d-%02d' % (yr, mo, da)
+        self.time = '00:00'
+        self.categories = []
+        self.subtitle = None
 
         with open(self.filename, 'r') as f:
             header = True
             for line in f:
                 line = line.strip()
                 if not header or len(line) <= 0 or not re.match(r'^.+?:.+?$', line):
-                    self.content += line + '\n'
+                    self.raw_content += line + '\n'
                     header = False
                 else:
                     k, v = line.split(':', 1)
-                    self.props[k.strip()] = v.strip()
+                    self._set_prop(k, v)
+        self.content = formatter(self.raw_content)
+
+    def _set_prop(self, prop, val):
+        '''Given a property (such as from a post), set that on
+        ourselves.  This is an internal method.
+
+        '''
+        prop = prop.lower().strip()
+        val = val.strip()
+
+        if prop == 'publish':
+            self.publish = True if val == 'yes' else False
+        elif prop == 'time':
+            self.time = val
+        elif prop == 'categories':
+            self.categories = [x.strip() for x in val.split(',')]
+        elif prop == 'subtitle':
+            self.subtitle = val
 
     def __lt__(self, other):
         return self.time < other.time

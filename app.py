@@ -4,9 +4,9 @@ The idea for this software was taken directly from toto:
 
     https://github.com/cloudhead/toto
 
-I loved the idea of a Git powered blog, but being the Python guy that I am
-it didn't seem right to be running something in Ruby.  Also, much harder
-and slower for me to work with.
+I loved the idea of a Git powered blog, but being the Python guy that
+I am (now) it didn't seem right to be running something in Ruby. Also,
+much harder and slower for me to work with.
 
 Thus: Aurora.
 
@@ -44,9 +44,7 @@ def article(slug=None):
         return redirect('/')
     if not slug in ARTICLES.by_slug:
         return error_404()
-
-    md = Markup(markdown(ARTICLES.by_slug[slug].content))
-    return render_template('article.html', article=md)
+    return render_template('article.html', article=ARTICLES.by_slug[slug])
 
 
 @app.errorhandler(404)
@@ -63,7 +61,11 @@ def refresh_article_list():
     if ARTICLE_CACHE_TIMER is not None and time() < ARTICLE_CACHE_TIMER:
         return
     ARTICLE_CACHE_TIMER = time() + 10
-    ARTICLES = Articles('articles')  # Articles!
+
+    def formatter(content):
+        return Markup(markdown(content))
+
+    ARTICLES = Articles('articles', formatter)  # Articles!
 
 
 if __name__ == '__main__':

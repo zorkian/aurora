@@ -3,6 +3,8 @@
 {% block pagetitle %}Welcome to my blog!{% endblock %}
 {% block content %}
     {% for article in articles.by_recent %}
-        {% include 'article/simple.html' %}
+        {% if had_article %}<hr />{% endif %}
+        {% include 'layout/article/simple.html' %}
+        {% set had_article = True %}
     {% endfor %}
 {% endblock %}
