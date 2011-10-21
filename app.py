@@ -23,8 +23,8 @@ from time import time
 from aurora import *
 
 CONFIG = {
-    'title':    "My Aurora Blog",
-    'subtitle': "blog subtitle can go here",
+    'title':    "Mark's Blog",
+    'subtitle': "technical meanderings of Mark 'xb95' Smith",
 }
 
 ARTICLE_CACHE_TIMER = None
