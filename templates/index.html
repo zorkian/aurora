@@ -1,7 +1,7 @@
 {% extends "layout/base.html" %}
 {% block content %}
     {% for article in articles.on_index %}
-        {% if had_article %}<br /><hr /><br />{% endif %}
+        {% if had_article %}<hr class='article' />{% endif %}
         {% include 'layout/article/simple.html' %}
         {% set had_article = True %}
     {% endfor %}

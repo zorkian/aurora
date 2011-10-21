@@ -1,4 +1,4 @@
-publish: no
+publish: yes
 title: Testing Stuff
 
 This is a test.  This is only a test.  This should show up in the blog
