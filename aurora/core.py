@@ -16,6 +16,7 @@ class Articles:
         self.by_slug = {}  # Slug -> Article
         self.by_recent = []  # [ Art, Art, Art... ] where 0 is oldest, -1 is most recent
         self.by_date = {}  # Yr -> { Mo -> [ ... ] }
+        self.on_index = []  # [ Art, Art, Art... ]
 
         if not os.path.isdir(path):
             return
@@ -49,6 +50,10 @@ class Articles:
             for mo in self.by_date[yr]:
                 self.by_date[yr][mo].sort()
 
+        # Construct the index of the most recent N.
+        self.on_index = self.by_recent[-3:]
+        self.on_index.reverse()
+
 
 class Article:
     '''A single Article.
@@ -64,21 +69,22 @@ class Article:
         self.props = {}
         self.content = ''
         self.raw_content = ''
+        self.title = 'no title'
         self.publish = True
         self.date = '%04d-%02d-%02d' % (yr, mo, da)
         self.time = '00:00'
         self.categories = []
-        self.subtitle = None
+        self.subtitle = ''
 
         with open(self.filename, 'r') as f:
             header = True
             for line in f:
-                line = line.strip()
-                if not header or len(line) <= 0 or not re.match(r'^.+?:.+?$', line):
-                    self.raw_content += line + '\n'
+                tline = line.strip()
+                if not header or len(tline) <= 0 or not re.match(r'^.+?:.+?$', line):
+                    self.raw_content += line.rstrip() + '\n'
                     header = False
                 else:
-                    k, v = line.split(':', 1)
+                    k, v = tline.split(':', 1)
                     self._set_prop(k, v)
         self.content = formatter(self.raw_content)
 
@@ -98,8 +104,14 @@ class Article:
             self.categories = [x.strip() for x in val.split(',')]
         elif prop == 'subtitle':
             self.subtitle = val
+        elif prop == 'title':
+            self.title = val
 
     def __lt__(self, other):
-        return self.time < other.time
+        '''Internal: for sorting these objects.
 
+        '''
+        if self.date == other.date:
+            return self.time < other.time
+        return self.date < other.date
 

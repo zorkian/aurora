@@ -32,33 +32,47 @@ html {
 }
 hr {
     border: 0px;
-    color: #CCCCCC;
-    background-color: #CDCDCD;
+    color: #cccccc;
+    background-color: #cdcdcd;
     height: 1px;
-    width: 100%;
 }
 h1 {
-    font-size: 1.1em;
+    font-size: 1.2em;
     color: #cc0000;
-    padding: 0px 0px 5px 0px;
-    font-weight: normal;
+    font-weight: bold;
+    padding: 5px 0px 5px 0px;
 }
 h2 {
-    font-size: 1.0em;
-    color: gray;
+    font-size: 1.1em;
+    padding: 5px 0px 5px 0px;
+    color: #cc0000;
     font-weight: normal;
 }
 h3 {
-    color: #cc0000;
     font-size: 0.9em;
+    color: #cc0000;
+    padding: 5px 0px 5px 5px;
     font-weight: normal;
-    padding: 0px 5px 5px 5px;
-    margin-top: 5px;
+    font-style: italic;
 }
 
 p.suffix {
     font-size: smaller;
     text-align: right;
+}
+
+div#subtitle {
+    padding: 0px 0px 5px 5px;
+    font-size: 1.0em;
+    color: #aaa;
+    font-weight: normal;
+}
+
+div#title {
+    font-size: 1.5em;
+    color: #bb0000;
+    font-weight: normal;
+    padding: 5px 0px 0px 0px;
 }
 
 #left {
@@ -74,7 +88,15 @@ p.suffix {
 }
 p {
     color: black;
-    padding: 0px 5px 5px 5px;
+    padding: 5px 5px 5px 5px;
+}
+pre {
+    padding: 5px 5px 5px 15px;
+    font-size: 1.0em;
+    background-color: #ddd;
+}
+code {
+    font-size: 1.2em;
 }
 a {
     color: #cc0000;

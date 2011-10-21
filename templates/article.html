@@ -1,3 +1,4 @@
 {% extends "layout/base.html" %}
-{% block title %}Aurora Blog Engine{% endblock %}
-{% block content %}{{ article }}{% endblock %}
+{% block contenttitle %}<h1>{{ article.title }}</h1>{% endblock %}
+{% block contentsubtitle %}{{ article.subtitle }}{% endblock %}
+{% block content %}{{ article.content }}{% endblock %}

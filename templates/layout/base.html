@@ -3,31 +3,29 @@
 <head>
     <link rel="stylesheet" type="text/css" href="/static/css/aurora.css">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}{{ config.title }}{% endblock %}</title>
 </head>
 <body>
   <div id="container">
     <div id="header">
-      <h1>{% block pagetitle %}{{ self.title() }}{% endblock %}</h1>
-      <h2>{% block subtitle %}just a blog around town{% endblock %}</h2><br />
+      <div id="title"><a href='/'>{% block pagetitle %}{{ self.title() }}{% endblock %}</a></div>
+      <div id="subtitle">{% block subtitle %}{{ config.subtitle }}{% endblock %}</div>
       <hr />
-    </div><!-- end header -->
+    </div>
 
     <div id="left">
       {% block sidebar %}
-        <h3>Content</h3>
+        <h2>Content</h2>
         <p>Some sort of content goes here, supposedly.</p>
 
-        <h3>More Content</h3>
+        <h2>More Content</h2>
         <p>Even more, here!</p>
       {% endblock %}
     </div>
 
     <div id="main">
-      {% block content %}
-        <h3>Stuff and Nonsense</h3>
-        <p>It's time for a big lorem ipsum block!</p>
-      {% endblock %}
+        {% block contenttitle %}{% endblock %}
+        {% block content %}{% endblock %}
     </div>
 
     <div id="footer">

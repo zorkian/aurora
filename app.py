@@ -22,10 +22,23 @@ from markdown import markdown
 from time import time
 from aurora import *
 
+CONFIG = {
+    'title':    "My Aurora Blog",
+    'subtitle': "blog subtitle can go here",
+}
 
 ARTICLE_CACHE_TIMER = None
 ARTICLES = None  # Articles object
 app = Flask(__name__)
+
+
+def template(tmpl, **args):
+    '''Render a template by name with the given arguments.
+
+    '''
+    global CONFIG
+    args['config'] = CONFIG
+    return render_template(tmpl, **args)
 
 
 @app.route('/')
@@ -34,7 +47,7 @@ def index():
 
     '''
     global ARTICLES
-    return render_template('index.html', articles=ARTICLES)
+    return template('index.html', articles=ARTICLES)
 
 
 @app.route('/article/<slug>')
@@ -44,12 +57,12 @@ def article(slug=None):
         return redirect('/')
     if not slug in ARTICLES.by_slug:
         return error_404()
-    return render_template('article.html', article=ARTICLES.by_slug[slug])
+    return template('article.html', article=ARTICLES.by_slug[slug])
 
 
 @app.errorhandler(404)
 def error_404(error=None):
-    return render_template('404.html')
+    return template('404.html')
 
 
 @app.before_request

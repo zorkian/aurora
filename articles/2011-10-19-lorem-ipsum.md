@@ -1,3 +1,4 @@
+title: The Lorem Ipsum Post
 
 # Header
 

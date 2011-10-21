@@ -1,9 +1,7 @@
 {% extends "layout/base.html" %}
-{% block title %}Aurora{% endblock %}
-{% block pagetitle %}Welcome to my blog!{% endblock %}
 {% block content %}
-    {% for article in articles.by_recent %}
-        {% if had_article %}<hr />{% endif %}
+    {% for article in articles.on_index %}
+        {% if had_article %}<br /><hr /><br />{% endif %}
         {% include 'layout/article/simple.html' %}
         {% set had_article = True %}
     {% endfor %}
