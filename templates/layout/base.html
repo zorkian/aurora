@@ -14,13 +14,7 @@
     </div>
 
     <div id="left">
-      {% block sidebar %}
-        <h2>Content</h2>
-        <p>Some sort of content goes here, supposedly.</p>
-
-        <h2>More Content</h2>
-        <p>Even more, here!</p>
-      {% endblock %}
+        {% block sidebar %}{% include 'sidebar.html' %}{% endblock %}
     </div>
 
     <div id="main">
