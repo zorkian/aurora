@@ -83,6 +83,7 @@ div#title {
     width: 250px;
     padding: 5px 5px 0px 0px;
     color: black;
+    font-size: 0.9em;
 }
 
 #main {
@@ -96,11 +97,16 @@ p {
 }
 pre {
     padding: 5px 5px 5px 15px;
+    margin: 5px 0px 5px 0px;
     font-size: 1.0em;
     background-color: #ddd;
 }
 code {
-    font-size: 1.2em;
+    font-size: 1.3em;
+    line-height: 130%;
+}
+tt {
+    font-size: 1.4em;
 }
 a {
     color: #cc0000;
