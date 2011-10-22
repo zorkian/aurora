@@ -65,7 +65,7 @@ def article(slug=None):
 
 
 @app.route('/articles.xml')
-def article(slug=None):
+def xml_index(slug=None):
     global ARTICLES, CONFIG
     items = []
     for article in ARTICLES.by_recent[-10:]:
