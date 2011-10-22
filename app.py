@@ -14,17 +14,21 @@ Written by Mark Smith <mark@qq.is>.
 
 '''
 
+import datetime
 import os
 import re
 import pprint
-from flask import Flask, render_template, redirect, Markup
+import PyRSS2Gen as RSS2
+from flask import Flask, render_template, redirect, Markup, make_response, escape
 from markdown import markdown
 from time import time
 from aurora import *
 
 CONFIG = {
+    'url':      "http://qq.is",
     'title':    "Mark's Blog",
     'subtitle': "technical meanderings of Mark 'xb95' Smith",
+    'description': "Technical ramblings somewhere between development and operations.",
 }
 
 ARTICLE_CACHE_TIMER = None
@@ -60,9 +64,34 @@ def article(slug=None):
     return template('article.html', article=ARTICLES.by_slug[slug])
 
 
+@app.route('/articles.xml')
+def article(slug=None):
+    global ARTICLES, CONFIG
+    items = []
+    for article in ARTICLES.by_recent[-10:]:
+        items.append(RSS2.RSSItem(
+             title = article.title,
+             link = "%s/article/%s" % (CONFIG['url'], article.slug),
+             description = escape(markdown(article.raw_content)),
+             guid = RSS2.Guid("%s/article/%s" % (CONFIG['url'], article.slug)),
+             pubDate = datetime.datetime.strptime('%s %s' % (article.date, article.time), '%Y-%m-%d %H:%M')))
+    items.reverse()
+
+    rss = RSS2.RSS2(
+        title = CONFIG['title'],
+        link = CONFIG['url'],
+        description = CONFIG['description'],
+        lastBuildDate = datetime.datetime.utcnow(),
+        items = items)
+
+    response = make_response(rss.to_xml(encoding='utf-8'))
+    response.headers['Content-Type'] = 'application/rss+xml'
+    return response
+
+
 @app.errorhandler(404)
 def error_404(error=None):
-    return template('404.html')
+    return template('404.html'), 404
 
 
 @app.before_request

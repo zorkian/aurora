@@ -22,17 +22,18 @@ that to me.
 
 If you want to go check it out now, the code is available here:
 
-https://github.com/xb95/nagios-api
+[https://github.com/xb95/nagios-api](https://github.com/xb95/nagios-api)
 
 Right now it's fairly simple and only lets you do a few things: get
 the state (enough to implement a status page), schedule/cancel downtimes
 (90% of what I have to do from the command line anyway), and tail the
 log (the final 10% of what I'm typically up to).
 
-This is implemented on top of the Diesel framework by Jamie Turner et
-al. Since coming to Bump and discovering Diesel, implementing this kind
-of network/loop driven system in Python has gone from 'annoying' to
-'so easy I can do it in my sleep'. Seriously good stuff.
+This is implemented on top of the [Diesel
+framework](https://github.com/jamwt/diesel) by Jamie Turner et al.
+Since coming to Bump and discovering Diesel, implementing this kind of
+network/loop driven system in Python has gone from 'annoying' to 'so
+easy I can do it in my sleep'. Seriously good stuff.
 
 Future plans: add a lot more functionality, of course. There are many
 verbs in the Nagios language and I want to be able to support most or
