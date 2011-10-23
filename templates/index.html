@@ -1,8 +1,39 @@
 {% extends "layout/base.html" %}
+{% block head %}
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="{{ config.url }}/articles.xml" />
+{% endblock %}
+{% block presidebar %}
+    <h2>Recent Posts</h2>
+    <p>
+    {% for article in articles.on_index %}
+        - <a href='/article/{{ article.slug }}'>{{ article.title }}</a>
+        <br />
+    {% endfor %}
+    </p>
+{% endblock %}
 {% block content %}
     {% for article in articles.on_index %}
         {% if had_article %}<hr class='article' />{% endif %}
-        {% include 'layout/article/simple.html' %}
+        <div class='article'>
+            <h1><a href='/article/{{ article.slug }}'>{{ article.title }}</a></h1>
+            {{ article.content }}
+            <p class='suffix'>
+                <a href='/article/{{ article.slug }}#disqus_thread' data-disqus-identifier='{{ article.slug }}'>View Comments</a>
+                // posted on {{ article.date }} at {{ article.time }}
+            </p>
+        </div>
         {% set had_article = True %}
     {% endfor %}
+
+<script type="text/javascript">
+    var disqus_shortname = 'xb95';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 {% endblock %}

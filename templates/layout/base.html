@@ -4,6 +4,7 @@
     <link rel="stylesheet" type="text/css" href="/static/css/aurora.css">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
     <title>{% block title %}{{ config.title }}{% endblock %}</title>
+    {% block head %}{% endblock %}
 </head>
 <body>
   <div id="container">
@@ -14,6 +15,7 @@
     </div>
 
     <div id="left">
+        {% block presidebar %}{% endblock %}
         {% block sidebar %}{% include 'sidebar.html' %}{% endblock %}
     </div>
 
