@@ -1,6 +1,6 @@
-time: 21:08
-categories: Tools
-publish: no
+time: 13:06
+categories: Tools, Tutorials
+publish: yes
 title: Using Git Flow on GitHub
 
 A while ago while at StumbleUpon we looked at using git flow, an
@@ -100,10 +100,54 @@ upstream I have yet found. Bravo!
 
 ## Write More Code
 
-...
+This process couldn't be simpler. If your pull request results in
+someone asking for some changes, you can do that just like you were
+doing your earlier development.
+
+First, make sure that you're on the right branch. If you have been
+working on other projects in the meantime, you can switch back to your
+feature branch like this:
+
+    $ git checkout feature/default-command
+
+Now that you're on the branch, go ahead and make your changes. Do
+whatever you need to do and then commit them. Finally, push your changes
+up to your fork on GitHub:
+
+    $ git push upstream HEAD
+
+Now if you go look at your pull request, you'll see that your commits
+have shown up automatically since it is tracking your branch. When
+you're ready for the upstream author to look at your changes again, it's
+best to comment and let them know.
 
 ## Cleanup
 
-...
+Great, now you've finished and the upstream author has accepted your
+change. Your pull request has been accepted and you're done. Now you can
+consider closing off that branch so that it doesn't continue to clutter
+up your UI.
 
+If you're ready to do that, let's go back to the repository. First
+make sure you are on the right branch (see the above section). When
+everything looks good and you're ready, tell git flow you're finished
+with this feature:
 
+    $ git flow feature finish feature default-command
+
+If everything looks good locally, you can now delete the branch on
+GitHub:
+
+    $ git push origin --delete feature/default-command
+
+Done. You have now cleaned up your local branch as well as the remote
+GitHub branch. That's all there is to it.
+
+# Next Steps
+
+That's it for today. Thanks for reading and please let me know where
+this guide can be improved. I hope to maintain it as a living document
+to help people.
+
+And of course -- your next step is to go write some code! I look forward
+to seeing some patches now. :)
