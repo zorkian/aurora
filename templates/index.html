@@ -2,6 +2,15 @@
 {% block head %}
     <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="{{ config.url }}/articles.xml" />
 {% endblock %}
+{% block presidebar %}
+    <h2>Recent Posts</h2>
+    <p>
+    {% for article in articles.on_index %}
+        - <a href='/article/{{ article.slug }}'>{{ article.title }}</a>
+        <br />
+    {% endfor %}
+    </p>
+{% endblock %}
 {% block content %}
     {% for article in articles.on_index %}
         {% if had_article %}<hr class='article' />{% endif %}

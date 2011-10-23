@@ -1,6 +1,6 @@
 time: 14:00
 categories: Operations, Nagios
-title: Announcing: An easy to use Nagios API
+title: An easy to use Nagios API
 
 Over the years I've been doing systems administration, I've spent
 a lot of time (really, quite a lot) writing tools that pull data from
