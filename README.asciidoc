@@ -1,4 +1,19 @@
-Not a bunch of stuff here yet.
+This is Aurora.  It is a super simple article/blog display engine that
+is designed to operate as a git repository.  Fire it up, stick in some
+content, customize the display, and away you go.
 
-This will be licensed and such. For now, I'm just throwing it on GitHub
-so I can use it from other places.  Awesome!
+The idea for this software was taken directly from toto:
+
+    https://github.com/cloudhead/toto
+
+I loved the idea of a git powered blog, but being the Python guy that
+I am (now) it didn't seem right to be running something in Ruby. Also,
+Ruby is much harder and slower for me to work with. Therefore, let's
+reinvent a bit of that wheel, shall we?
+
+Thus: Aurora.
+
+See the LICENSE file for copyright and licensing information. Please
+send all bug reports in the form of pull requests on GitHub. ;)
+
+Written by Mark Smith <mark@qq.is>.

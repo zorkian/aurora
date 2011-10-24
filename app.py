@@ -25,10 +25,10 @@ from time import time
 from aurora import *
 
 CONFIG = {
-    'url':      "http://qq.is",
-    'title':    "Mark's Blog",
-    'subtitle': "technical meanderings of Mark 'xb95' Smith",
-    'description': "Technical ramblings somewhere between development and operations.",
+    'url':      "http://someurl.com",
+    'title':    "My Aurora Blog",
+    'subtitle': "some blog subtitle can go here",
+    'description': "Blog description goes here for metadata.",
 }
 
 ARTICLE_CACHE_TIMER = None
