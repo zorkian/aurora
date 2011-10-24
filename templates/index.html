@@ -18,22 +18,10 @@
             <h1><a href='/article/{{ article.slug }}'>{{ article.title }}</a></h1>
             {{ article.content }}
             <p class='suffix'>
-                <a href='/article/{{ article.slug }}#disqus_thread' data-disqus-identifier='{{ article.slug }}'>View Comments</a>
+                <a href='/article/{{ article.slug }}'>view</a>
                 // posted on {{ article.date }} at {{ article.time }}
             </p>
         </div>
         {% set had_article = True %}
     {% endfor %}
-
-<script type="text/javascript">
-    var disqus_shortname = 'xb95';
-
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
 {% endblock %}
