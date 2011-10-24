@@ -3,10 +3,12 @@ categories: Tools, Tutorials
 publish: yes
 title: Using Git Flow on GitHub
 
-A while ago while at StumbleUpon we looked at using git flow, an
-implementation of the workflow outlined in the post A Successful Git
-Branching Model. It looked really interesting and I wanted to try it but
-never got around to it.
+A while ago while at StumbleUpon we looked at using [git
+flow](https://github.com/nvie/gitflow), an implementation of
+the workflow outlined in the post [A Successful Git Branching
+Model](http://nvie.com/posts/a-successful-git-branching-model/). It
+looked really interesting and I wanted to try it but never got around to
+it.
 
 Lately, I have. Thanks to this very helpful post on the subject, I
 have now worked this tool in to my daily open source work. It actually
@@ -29,9 +31,10 @@ matter for the purpose of this post.)
 
 ## Set Up (Forking, Config, Git Flow)
 
-The code I wanted to change is on GitHub already in the repository
-`perlbal/Perlbal`. I clicked the "Fork" button and a few moments later,
-GitHub gave me my own copy of the code to do with as I will.
+The code I wanted to change is on GitHub already, in the repository
+[perlbal/Perlbal](https://github.com/perlbal/Perlbal). I clicked the
+"Fork" button and a few moments later GitHub gave me my own copy of the
+code to do with as I will.
 
 Most of you have probably used git before, so you won't be surprised by
 the next step:
@@ -60,13 +63,15 @@ it. For today's example:
     $ git flow feature start default-command
 
 A few moments later, you will have a new branch named
-feature/default-command. It does a little other magic in the background
-and some sanity checks to make sure you don't have uncommitted changes,
-but otherwise, it's mostly just creating a branch for you.
+`feature/default-command`. It does a little other magic in the
+background and some sanity checks to make sure you don't have
+uncommitted changes, but otherwise, it's mostly just creating a branch
+for you.
 
 Now do your development and commit, just like normal. (This part
 I assume you know how to do and am not going to spend any time
-discussing.)
+discussing.) The only thing to keep in mind is that you need to make
+sure all of your commits stay on the feature branch you're on.
 
 ## Submit to GitHub
 
@@ -76,9 +81,9 @@ share that with other people. In our case, however, since we're using
 GitHub and we want to upstream this change, we actually want to leave
 the feature branch open.
 
-This is important: do not use git flow feature finish yet! If you do,
-I'm not sure how to recover from that situation. (I'd love to know, if
-anybody out there has some good advice on the matter.)
+This is important: *do not use `git flow feature finish` yet!* If you
+do, I'm not sure how to recover from that situation. (I'd love to know,
+if anybody out there has some good advice on the matter.)
 
 What you should actually do is this:
 
@@ -114,7 +119,7 @@ Now that you're on the branch, go ahead and make your changes. Do
 whatever you need to do and then commit them. Finally, push your changes
 up to your fork on GitHub:
 
-    $ git push upstream HEAD
+    $ git push origin HEAD
 
 Now if you go look at your pull request, you'll see that your commits
 have shown up automatically since it is tracking your branch. When
