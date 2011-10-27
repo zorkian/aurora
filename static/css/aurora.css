@@ -130,3 +130,13 @@ a:hover {
     font-size: 100%;
     margin-top: 5px;
 }
+ul {
+    margin-left: 20px;
+}
+
+blockquote {
+    margin: 10px 20px 10px 20px;
+    border: solid 1px black;
+    padding: 5px;
+    background-color: #f8f8f8;
+}

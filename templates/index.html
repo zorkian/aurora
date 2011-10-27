@@ -5,7 +5,7 @@
 {% block presidebar %}
     <h2>Recent Posts</h2>
     <p>
-    {% for article in articles.on_index %}
+    {% for article in articles.by_recent[-10:] %}
         - <a href='/article/{{ article.slug }}'>{{ article.title }}</a>
         <br />
     {% endfor %}

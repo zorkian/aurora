@@ -19,7 +19,7 @@ import os
 import re
 import pprint
 import PyRSS2Gen as RSS2
-from flask import Flask, render_template, redirect, Markup, make_response, escape
+from flask import Flask, render_template, redirect, Markup, make_response, escape, request
 from markdown import markdown
 from time import time
 from aurora import *
@@ -100,6 +100,11 @@ def refresh_article_list():
 
     '''
     global ARTICLES, ARTICLE_CACHE_TIMER
+    try:
+        app.logger.debug('-> %s' % request.headers['Referer'])
+    except:
+        pass
+
     if ARTICLE_CACHE_TIMER is not None and time() < ARTICLE_CACHE_TIMER:
         return
     ARTICLE_CACHE_TIMER = time() + 10
