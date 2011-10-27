@@ -166,10 +166,10 @@ from the command line *and* the web browser.
 For now, let's kill the running `nagios-api` and give it a new command
 line option:
 
-    $ ./nagios-api -s STATUS_FILE -c COMMAND_FILE -l LOG_FILE -a \*
+    $ ./nagios-api -s STATUS_FILE -c COMMAND_FILE -l LOG_FILE -o \*
 
 (You have to escape the asterisk, at leats from Bash.)
-The `-a` parameter instructs the daemon to send out a
+The `-o` parameter instructs the daemon to send out a
 `Access-Control-Allow-Origin` header with every response. This
 header is part of the relatively new [Cross-Origin Resource
 Sharing](http://www.w3.org/TR/cors/) spec.
