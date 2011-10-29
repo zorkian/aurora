@@ -72,7 +72,7 @@ def xml_index(slug=None):
         items.append(RSS2.RSSItem(
              title = article.title,
              link = "%s/article/%s" % (CONFIG['url'], article.slug),
-             description = escape(markdown(article.raw_content)),
+             description = markdown(article.raw_content),
              guid = RSS2.Guid("%s/article/%s" % (CONFIG['url'], article.slug)),
              pubDate = datetime.datetime.strptime('%s %s' % (article.date, article.time), '%Y-%m-%d %H:%M')))
     items.reverse()
@@ -85,7 +85,7 @@ def xml_index(slug=None):
         items = items)
 
     response = make_response(rss.to_xml(encoding='utf-8'))
-    response.headers['Content-Type'] = 'application/rss+xml'
+    response.headers['Content-Type'] = 'text/xml; charset=utf-8'
     return response
 
 
