@@ -39,7 +39,7 @@ code to do with as I will.
 Most of you have probably used git before, so you won't be surprised by
 the next step:
 
-    $ git checkout git@github.com:xb95/Perlbal.git
+    $ git clone git@github.com:xb95/Perlbal.git
     $ cd Perlbal/
     $ git remote add upstream git@github.com:perlbal/Perlbal.git
     $ git flow init
