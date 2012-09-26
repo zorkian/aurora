@@ -45,7 +45,7 @@ class Articles:
             self.by_date[yr][mo].append(art)
 
         # Do a bunch of sorting.
-        self.by_recent.sort()
+        self.by_recent.sort(reverse=True)
         for yr in self.by_date:
             for mo in self.by_date[yr]:
                 self.by_date[yr][mo].sort()
