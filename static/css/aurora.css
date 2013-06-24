@@ -45,7 +45,7 @@ h1 {
     font-size: 1.2em;
     color: #440000;
     font-weight: bold;
-    padding: 0px 0px 5px 0px;
+    padding: 1em 0 0 0;
 }
 h2 {
     font-size: 1.1em;
@@ -80,6 +80,10 @@ div#title {
     padding: 5px 0px 0px 0px;
 }
 
+#left > div {
+    margin-bottom: 1em;
+}
+
 #left {
     float: left;
     width: 250px;
@@ -92,11 +96,12 @@ div#title {
     margin: 0px 5px 5px 260px;
     padding: 10px 5px 5px 15px;
     border-left: 1px solid silver;
-    background-color: rgba(0, 0, 0, 0.08);
+    border-right: 1px solid silver;
+    background-color: rgb(240, 240, 240);
 }
 p {
     color: black;
-    padding: 5px 5px 5px 5px;
+    padding: 1em 0.5em 0 0;
 }
 pre {
     padding: 5px 5px 5px 15px;
@@ -135,6 +140,10 @@ a:hover {
 }
 ul {
     margin-left: 20px;
+}
+
+ol {
+    margin-left: 40px;
 }
 
 blockquote {

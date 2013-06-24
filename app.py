@@ -1,3 +1,4 @@
+#!/usr/bin/python
 '''aurora -- a simple, rest easy blog
 
 The idea for this software was taken directly from toto:
@@ -112,7 +113,7 @@ def refresh_article_list():
     def formatter(content):
         return Markup(markdown(content))
 
-    ARTICLES = Articles('articles', formatter)  # Articles!
+    ARTICLES = Articles('/home/mark/code/aurora/articles', formatter)  # Articles!
 
 
 if __name__ == '__main__':

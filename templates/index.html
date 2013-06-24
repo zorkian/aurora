@@ -4,12 +4,12 @@
 {% endblock %}
 {% block presidebar %}
     <h2>Recent Posts</h2>
-    <p>
+    <div>
     {% for article in articles.by_recent[-10:] %}
         - <a href='/article/{{ article.slug }}'>{{ article.title }}</a>
         <br />
     {% endfor %}
-    </p><br /><hr /><br />
+    </div><br /><hr /><br />
 {% endblock %}
 {% block content %}
     {% for article in articles.on_index %}

@@ -51,8 +51,7 @@ class Articles:
                 self.by_date[yr][mo].sort()
 
         # Construct the index of the most recent N.
-        self.on_index = self.by_recent[-3:]
-        self.on_index.reverse()
+        self.on_index = self.by_recent[0:3]
 
 
 class Article:
