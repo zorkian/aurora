@@ -7,7 +7,7 @@ This entry talks about how to set up and test the [Nagios
 API](https://github.com/xb95/nagios-api) in your environment. We cover
 the CLI and also using it from the web.
 
-## Getting the Code
+# Getting the Code
 
 For now, this project doesn't support packaging or have a setup.py file,
 so you will have to do it by hand. This isn't very hard, but since the
@@ -28,7 +28,7 @@ That command creates a directory appropriately named `nagios-api`.
 Inside this directory are several executables, some documentation, and a
 library directory.
 
-## Test Run
+# Test Run
 
 Before we can run it, we have to figure out where your Nagios
 installation is stashing the files we need. Most of these are probably
@@ -59,7 +59,7 @@ don't, the most likely culprit will be that it can't find one of the
 files you indicate. Also, if it can't bind on port 6315, then it would
 fail. (You can change the port with `-p PORT_NUMBER`.)
 
-## Testing the API
+# Testing the API
 
 Great. The daemon is up and running ... now what? Well, let's make sure
 that it worked. Let's break out the CLI program, `nagios-cli`, and use
@@ -151,7 +151,7 @@ Or cancel the downtime for the host and any services that are in downtime:
 
 That's a short and easy introduction to the CLI.
 
-## Using the API from the Web
+# Using the API from the Web
 
 If you're like me, the CLI is your one-stop shop for everything. I
 generally work from terminal because I can express whatever I need
@@ -239,7 +239,7 @@ my case I see a bunch of PING results.
     
 And that's it! You can access the API from your browser.
 
-## Productionizing
+# Productionizing
 
 To make sure that your API stays up and running, I would suggest you
 consider the following:
@@ -262,7 +262,7 @@ consider the following:
 That's it. Now the API should be resilient to failure and allow you to
 depend on it in the rest of your infrastructure.
 
-## Further Development
+# Further Development
 
 The future of the Nagios API is somewhat dependent on what the community
 needs. For my own purposes, it already does everything I need. Certainly

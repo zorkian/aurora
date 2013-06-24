@@ -11,7 +11,7 @@ time finding enough information online about this problem, but also to
 walk you through some steps you can take when debugging a problem like
 this.
 
-## The Problem
+# The Problem
 
 The original problem showed up when we were doing an `apt-get install`
 of an unrelated package. Through the magic of dependencies, it required
@@ -28,7 +28,7 @@ using a package management system and not building your own: reliable,
 repeatable installation. I want to know when I install something on one
 machine that it's going to work everywhere.
 
-## Initial Fix Attempt
+# Initial Fix Attempt
 
 From time to time, I find that a package fails in this manner because it
 is secretly depending on a newer version of something (like `libc`) but
@@ -44,7 +44,7 @@ see if that brings in all of the right packages and fixes it:
 
 Alas, that did not fix this problem. It continued to segfault.
 
-## To the Internet!
+# To the Internet!
 
 Next I did some searching on the Internet. If it's a big problem, odds
 are that someone has already written about it and found a fix. You can
@@ -61,7 +61,7 @@ We thought briefly that maybe the best solution would be to remove these
 XML packages, but since one of them is the Sun Java JRE's, and we use
 that, it didn't seem like a very good option.
 
-## More Debugging
+# More Debugging
 
 When a package is breaking like this, it's probably in the `postinst`
 script. Debian packages go through several different phases and many of
@@ -86,7 +86,7 @@ apparently it's not the fault of the MIME package, it's actually the
 underlying XML system. Using `xmllint` fails on the given XML files.
 This is a key step in debugging something: reducing the search domain.
 
-## Enter GDB
+# Enter GDB
 
 In cases where you're segfaulting, it's pretty easy to figure out
 exactly what is going on. `gdb` to the rescue:
@@ -136,4 +136,4 @@ http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=439982#10
 
 Now we're cooking.
 
-## 
+# 

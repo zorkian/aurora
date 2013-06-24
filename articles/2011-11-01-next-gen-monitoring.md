@@ -10,7 +10,7 @@ I'm getting enough internal momentum to actually make it happen. First,
 let's dive in and look at the existing landscape of monitoring tools (as
 I know them).
 
-## Define Your Terms
+# Define Your Terms
 
 For the purpose of this blog post, I define "monitoring" loosely as
 the act of gathering information about your services *for the express
@@ -29,7 +29,7 @@ I'm mostly focusing on the monitoring side of the equation. If you
 want a good recommendation for performance analysis, please see
 [OpenTSDB](http://opentsdb.net/).
 
-## Monitoring Today
+# Monitoring Today
 
 There are, it seems, two main approaches to monitoring: Nagios and
 everything else. Nagios is a fairly simple, relatively easy to use
@@ -66,7 +66,7 @@ what I'm looking for. Far too big for my needs.
 The only thing that comes close to meeting my needs (forget my wants) is
 Nagios Core.
 
-## So, why not Nagios Core?
+# So, why not Nagios Core?
 
 Because the HTML it generates looks like this:
 
@@ -114,7 +114,7 @@ everything else, so it's not all bad.
 In fact, I recommend it if you're not sure what to use. It is currently
 the best system out there for monitoring your infrastructure.
 
-## The Wheel, Again
+# The Wheel, Again
 
 Of course, I wouldn't have started this blog post if all I wanted to do
 was bash Nagios. I really don't intend to be that hard on it. It's a
@@ -147,7 +147,7 @@ availability of a service? Great, that's a simple HTTP query that will
 return JSON for you to consume. Make a shell script silence alerts?
 Easy.
 
-## Implementation Notes
+# Implementation Notes
 
 I've spent a lot of time considering my options here, and as
 much as I love Perl, these days I'm a Python guy. I'm going
@@ -181,7 +181,7 @@ etc. The list of possibilities is endless and it doesn't compromise the
 vision to build a simple system -- you never have to touch it. The power
 is there, though.
 
-## Closing Thoughts
+# Closing Thoughts
 
 Monitoring is a really interesting subject to me. It seems to me that
 the state of the art is really pretty woeful when you consider how

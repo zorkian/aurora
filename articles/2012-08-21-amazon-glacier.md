@@ -9,7 +9,7 @@ this is a service designed to replace off-site archival storage,
 commonly used for backups and long-term storage of infrequently accessed
 data.
 
-## The Use Case
+# The Use Case
 
 Glacier is not for your standard backups. This is designed for storing
 the long-term versions of backups that you only ever fall back to in
@@ -39,7 +39,7 @@ actually rather they weren't -- which, thankfully, S3 lets you do. You
 still end up feeling slightly like you're misusing this service and, in
 effect, paying for functionality you just don't need.
 
-## Cost Effectiveness
+# Cost Effectiveness
 
 Whenever Amazon announces a product, my first step is to understand
 the product and see if it's useful to me. This one is. Next, the big
@@ -102,7 +102,7 @@ huge economy of scale.
 Amazon Glacier is easily cheaper than hosting your own backups, not to
 mention more convenient.
 
-## Who It's Not For
+# Who It's Not For
 
 So, then, why wouldn't everybody use this service?
 
@@ -129,7 +129,7 @@ In my experience, this rules out large companies that wouldn't consider
 using Amazon's services anyway. For the rest of us who work in startups
 or small to medium businesses, though, Glacier looks great.
 
-## Some Caveats on Pricing and Usage
+# Some Caveats on Pricing and Usage
 
 One thing that is important to mention: this is the equivalent of Iron
 Mountain or similar long-term archival storages. It's like a glacier --

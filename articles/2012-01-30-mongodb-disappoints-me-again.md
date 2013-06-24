@@ -1,4 +1,4 @@
-title: MongoDB disappoints me again.
+title: MongoDB disappoints me again
 time: 10:35
 categories: MongoDB
 publish: yes

@@ -44,7 +44,7 @@ forwarding.
 > be able to `ssh user@host` and not have to type a password (except
 > maybe your SSH key passphrase).
 
-## How SSH works, in brief
+# How SSH works, in brief
 
 SSH is a layered system. If you are familiar with the [OSI
 model](http://en.wikipedia.org/wiki/OSI_model), you know that there are
@@ -84,7 +84,7 @@ SSH still uses a single TCP connection and multiplexes your forwarded
 connections, your shell, and whatever else you're doing all through the
 same pipe.
 
-## The problem statement
+# The problem statement
 
 Now let's move to forwarding. In our example today, we're going to be
 using three machines. Your laptop will be named `laptop` (original, I
@@ -142,7 +142,7 @@ your web server:
 
 You get a password prompt -- you aren't allowed in! How did this happen?
 
-## SSH forwarding, how it works
+# SSH forwarding, how it works
 
 On `gateway`, after establishing the SSH connection, take a look at the
 environment of your shell:
@@ -168,7 +168,7 @@ From inside of screen, your shell has no idea that there is real SSH
 authentication socket somewhere else. It just knows that the one you
 have told it to use doesn't exist.
 
-## Solving the crisis
+# Solving the crisis
 
 There are several ways of solving this problem. I believe the following
 to be the easiest and most reliable of the ones I've tried. This works
@@ -203,7 +203,7 @@ Inside of screen, the environment never has to change. It dereferences
 the symlink to find the correct socket and just works. No matter how
 many times you reconnect.
 
-## Conclusion and room for improvement
+# Conclusion and room for improvement
 
 It took me a while to settle on this method. Originally I tried
 something fancy with getting screen/tmux to automatically import

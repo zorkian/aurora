@@ -29,7 +29,7 @@ I had made. For this blog post, we'll look at one of those -- a small
 change to add a DEFAULT command. (What the change does exactly doesn't
 matter for the purpose of this post.)
 
-## Set Up (Forking, Config, Git Flow)
+# Set Up (Forking, Config, Git Flow)
 
 The code I wanted to change is on GitHub already, in the repository
 [perlbal/Perlbal](https://github.com/perlbal/Perlbal). I clicked the
@@ -53,7 +53,7 @@ changes they make later.
 Finally, the Git Flow system is initialized. I recommend you accept all
 of the defaults, they are reasonable and work well.
 
-## Write Some Code
+# Write Some Code
 
 Now we're ready to kick some code. From inside of the `Perlbal/` folder,
 you can instruct Git Flow that you are about to start developing on
@@ -73,7 +73,7 @@ I assume you know how to do and am not going to spend any time
 discussing.) The only thing to keep in mind is that you need to make
 sure all of your commits stay on the feature branch you're on.
 
-## Submit to GitHub
+# Submit to GitHub
 
 At this point, you normally would use Git Flow to finish the feature, it
 would merge your changes back into the development branch, and you could
@@ -103,7 +103,7 @@ Once you click the "Send pull request" button, you will have finished
 what is, to me, the cleanest and easiest way to work on code and send it
 upstream I have yet found. Bravo!
 
-## Write More Code
+# Write More Code
 
 This process couldn't be simpler. If your pull request results in
 someone asking for some changes, you can do that just like you were
@@ -126,7 +126,7 @@ have shown up automatically since it is tracking your branch. When
 you're ready for the upstream author to look at your changes again, it's
 best to comment and let them know.
 
-## Cleanup
+# Cleanup
 
 Great, now you've finished and the upstream author has accepted your
 change. Your pull request has been accepted and you're done. Now you can
