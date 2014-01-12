@@ -1,7 +1,7 @@
 title: The Root of All Evil
 time: 18:14
 categories: Operations
-publish: no
+publish: yes
 
 It's a little pretentious to make a post in this blog and name it
 "The Root of All Evil". But that's what I'm doing, that's what you're
@@ -109,7 +109,7 @@ kicked off a full database dump during peak hours.
 
 * Network filled up somewhere (gigabit is really quite slow). Or you've
 hit a *packet per second limit* even though your bits per second are
-totally fine. (Turns out most systems can only do about 100k pps.)
+totally fine. (Turns out most systems can only do about 30k pps.)
 
 * Someone is attacking your service: (D)DoS, slowloris, etc.
 
